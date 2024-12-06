@@ -66,5 +66,7 @@
    "start-date": "Start Date",
    "end-date": "End Date",
    "no-items-to-show": "No Items To Show",
-   "item-saved-success": "Item Saved Successfully!"
+   "item-saved-success": "Item Saved Successfully!",
+   "baby-info": "Baby Information",
+   "grams": "grams"
 }

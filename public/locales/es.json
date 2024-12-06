@@ -67,5 +67,7 @@
    "start-date": "Fecha de inicio",
    "end-date": "Fecha de finalización",
    "no-items-to-show": "No hay elementos para mostrar",
-   "item-saved-success": "Elemento guardado con exito!"
+   "item-saved-success": "Elemento guardado con exito!",
+   "baby-info": "Información del bebé",
+    "grams": "gramos"
 }

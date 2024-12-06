@@ -58,7 +58,7 @@ const Styles = {
         borderRadius: '10px',
     },
     container: {
-        padding: '30px',
+        padding: '10px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

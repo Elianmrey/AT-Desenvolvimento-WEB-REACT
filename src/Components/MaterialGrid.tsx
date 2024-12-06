@@ -66,7 +66,7 @@ const styles = {
     containerGrid: {
         display: 'flex',
         flexDirection: 'column',
-        padding: '20px',
+        padding:'20px',
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
@@ -83,7 +83,7 @@ const styles = {
         flexDirection: 'row',
         flexWrap: 'nowrap',
         alignItems: 'center',
-        justifyContent: 'space-evenly',
+        justifyContent: 'center',
         width: '100%',
         height: 'fit-content',
         backgroundColor: 'orange',
