@@ -1,50 +1,35 @@
-# React + TypeScript + Vite
+README: 
+1. Usar o Vite para Visualizar o Build
+O Vite tem um comando que cria um servidor local para testar o build.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Execute o seguinte comando no terminal:
 
-Currently, two official plugins are available:
+### Comando: 
+npm run preview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Ele iniciará um servidor local, geralmente acessível em <http://localhost:4173>.
 
-## Expanding the ESLint configuration
+Abra o navegador e teste sua aplicação.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. Usar o serve
 
-- Configure the top-level `parserOptions` property like this:
+Usando um servidor estático simples.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Instale o pacote serve globalmente:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Comando: 
+npm install -g serve
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Vá até a pasta dist:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Comando:
+cd dist
+
+Inicie o servidor:
+
+### Comando:
+serve
+
+Ele fornecerá um link como <http://localhost:3000> ou .<http://localhost:5000> 
+
+Acesse-o para ver sua aplicação funcionando.
