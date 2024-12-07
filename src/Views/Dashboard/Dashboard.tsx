@@ -60,26 +60,19 @@ export default function DashBoard() {
     useEffect(() => {
         getDashboard(Number(id));
     }, [id]); 
+
+
+
+    
     async function getDashboard(idItem: number) {
-  try {
-      await get("items", idItem).then((response: ResponseType[] | null  ) => {
-          setDataItem(response[0] ?? {
-              id: 0,
-              created_at: "",
-              type: 0,
-              side: 0,
-              quantity: 0,
-              start_date: "",
-              end_date: "",
-              observation: "",
-              action_type: 0,
-              title: ""
-      });
-    });
-  } catch (error) {
-    console.log("Tivemos um problema ao recuperar as informações",error);
-  }
-}
+        try {
+            await get("items", idItem).then((response: any[] | null) => {
+                setDataItem(response?.[0] as ResponseType);
+            });
+        } catch (error) {
+            console.log("Tivemos um problema ao recuperar as informações", error);
+        }
+    }
   
 
   
