@@ -78,6 +78,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         translate,
         changeLanguageInteractive,
         supabase,
+      
     };
 
     return (
@@ -98,6 +99,7 @@ interface AppContextInterface {
     handleCloseSnackbar: () => void;
     changeLanguageInteractive: () => void
     supabase: SupabaseClient;
+   
     
 }
 // eslint-disable-next-line react-refresh/only-export-components

@@ -11,10 +11,29 @@ import { useAppContext } from '../../../Context/Context.tsx';
 export default function DashBoard() {
     const { translate } = useAppContext();
     const [dataItem, setDataItem] = useState({
-        id: 0,
-        title: '',
-        observation: '',
+            id: 42,
+            created_at: "",
+            type: 0,
+            side: 0,
+           quantity: 0,
+            start_date: "",
+            end_date: "",
+            observation: "",
+            action_type: 0,
+            title: ""
+        
     });
+
+
+    function handleSide (side: number) {
+        if (side === 1)
+            return translate("left");
+        if (side === 2)
+            return translate("right");
+        if (side ===3)
+            return translate("both");
+    }
+
     const { id } = useParams();
    
     useEffect(() => {
@@ -40,11 +59,21 @@ export default function DashBoard() {
             <MaterialContainer styles={{width: "100%"}}>
                 
                 <MaterialTypography variant="h4" component="h1" styles={{ textAlign: 'center', marginBottom: 20, display:'block'} }>Dashboard</MaterialTypography>
-            <MaterialCard>
-                 
-                    <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 20, display: 'block' }}>
+             {dataItem.title ? <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 20, display: 'block' }}>
                         {translate(dataItem.title)}
-                    </MaterialTypography>
+                </MaterialTypography> : false}
+                   {dataItem.side ? <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 20, display: 'block' }}>
+                       {translate('side')+': ' + handleSide(dataItem.side)}
+                    </MaterialTypography> : false}
+                   
+                {dataItem.quantity ? <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 20, display: 'block' }}>
+                    {translate('quantity') + ': ' + handleSide(dataItem.quantity)+ ' ml'}
+                    </MaterialTypography> : false}
+                <MaterialCard>
+                     
+                 
+
+                    
                     <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 20, display: 'block' }}>
                         {dataItem.observation}
                     </MaterialTypography>

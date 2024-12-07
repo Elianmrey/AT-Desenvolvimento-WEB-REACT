@@ -10,14 +10,16 @@ import {useAppContext } from '../../../Context/Context';
 import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { onLogout } from '../../Services/Authentication';
-
+import MaterialBox from '../MaterialBox';
+import DisplaySettingsIcon from '@mui/icons-material/DisplaySettings';
 
 interface AppBarProps {
   title: string;
   home?: boolean
+  settings?: boolean
 }
 
-export default function MaterialAppBar({ title, home }: AppBarProps) {
+export default function MaterialAppBar({ title, home,settings }: AppBarProps) {
 
   const HandleLogout = () => {
     onLogout(supabase);
@@ -36,7 +38,13 @@ export default function MaterialAppBar({ title, home }: AppBarProps) {
               </IconButton> : <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={styles.iconButton} onClick={HandleLogout} >
           <LogoutIcon sx={{ color: 'orange' }}/>
               </IconButton>}
-              
+        
+        
+        {!settings ?  <MaterialBox styles={styles.settingsBox}>
+            <DisplaySettingsIcon sx={styles.settingsText}  onClick={() => navigate('/settings')}/>
+        </MaterialBox>: null}
+        
+        
         <Typography variant="h6" component="h2" sx={styles.title} >
           {title}
         </Typography>
@@ -90,5 +98,24 @@ const styles = {
     cursor: 'pointer',
     padding: '10px 10px',
     marginRight: '5px',
+  },
+  settingsBox: {
+    position: 'absolute',
+    
+    left: 65,
+    zIndex: 110,
+    cursor: 'pointer',
+    width: '40px',
+    height: '40px',
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
+  },
+  settingsText: {
+    fontSize: '30px',
+    color: 'white',
+    '&:hover': {
+      color: 'orange',
+    },
   }
 }

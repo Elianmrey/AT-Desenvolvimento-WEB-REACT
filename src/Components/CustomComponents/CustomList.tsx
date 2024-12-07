@@ -16,7 +16,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 interface ItemListProps {
     
-    items: Array<{ id: number; action_type: number; start_date: string; end_date: string; observation: string; title: string }>;
+    items: Array<{ id: number; action_type: number; start_date: string; end_date: string; observation: string; title: string, user_id: string }>;
     onDrop: ( id: number) => void;
 }
 
@@ -62,13 +62,15 @@ export default function CustomItemList({ items,onDrop, ...props }: ItemListProps
     const generateSubtitle = (item: { title: string;action_type: number}, translate: (key: string) => string) => {
         return `${translate('action')}: ${translate(getTitle(item.action_type))} `;
     };
+    
+    
 
 
     return (
         <MaterialBox>
             {items.length > 0 ? (
             <List {...props}>
-            {items.map((item, index) => {
+                    {items.map((item, index) => {
                 const typeStr = actionTypeListToInt[item.action_type];
                 return (
                     <ListItem

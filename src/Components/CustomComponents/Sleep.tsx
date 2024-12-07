@@ -13,9 +13,15 @@ interface SleepProps {
 
 export default function Sleep({ data, setData, translate }: SleepProps) {
 
-const { ShowAlert } = useAppContext();
+  const { ShowAlert } = useAppContext();
 
+  const user: string = JSON.parse(localStorage.getItem("user") || '{}');
 
+  const userJson = JSON.parse(user);
+
+  const userIdentity: string = userJson.id
+
+  
 const fields: {
   name: string;
   label: string;
@@ -27,7 +33,7 @@ const fields: {
   { name: "observation", label: translate("observation"), type: "text" },
 ];
   const handleSubmit = () => {
-    save('items', { ...data, action_type: 1, title: "sleep" });
+    save('items', { ...data, action_type: 1, title: "sleep", user_id: userIdentity });
     ShowAlert(translate("item-saved-success"), "success");
     setData({});
   };

@@ -1,7 +1,6 @@
 import { save } from "../../Services/Supabase";
 import FormComponent from "./Form";
 import { useAppContext } from "../../../Context/Context";
-
 interface EatProps {
   data: {
     type?: number;
@@ -18,6 +17,21 @@ interface EatProps {
 
 export default function Eat({ data, setData, translate }: EatProps) {
   const { ShowAlert } = useAppContext();
+
+  const user: string = JSON.parse(localStorage.getItem("user") || '{}');
+
+  const userJson = JSON.parse(user);
+
+  const userIdentity: string = userJson.id
+
+
+
+
+
+
+
+
+
   const fields: {
   name: string;
   label: string;
@@ -44,7 +58,7 @@ export default function Eat({ data, setData, translate }: EatProps) {
 
 
   const handleSubmit = () => {
-    save('items', { ...data, action_type: 2, title: "eat" });
+    save('items', { ...data, action_type: 2, title: "eat", user_id: userIdentity });
     ShowAlert(translate("item-saved-success"), "success");
     setData({});
   };

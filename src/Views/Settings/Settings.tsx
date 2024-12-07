@@ -28,7 +28,7 @@ export default function Formulary() {
 
     return (
         <MaterialContainer styles={styles.container}>
-            <MaterialAppBar title={translate("settings")} home={false} />
+            <MaterialAppBar title={translate("settings")} home={false} settings />
             <MaterialCard styles={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", }}>
                 <MaterialTypography variant='h5' component={'h2'} styles={styles.typographyStyle}>
                     {translate('baby-info')}

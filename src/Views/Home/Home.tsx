@@ -9,14 +9,37 @@ import { baby } from '../../Constants/BabyData.tsx';
 import CustomItemList from '../../Components/CustomComponents/CustomList.tsx';
 import { list } from '../../Services/Supabase';
 import { drop } from '../../Services/Supabase';
+
 export default function Home() {
     const [dataBase, setDataBase] = useState([]);
     const { translate } = useAppContext();
+    const [loading, setLoading] = useState(false);
 
 
+
+    const user: string = JSON.parse(localStorage.getItem("user") || '{}');
+
+    const userJson = JSON.parse(user);
+
+    const userIdentity: string = userJson.id
+
+    console.log("User ID: ", userIdentity);
+
+
+
+
+
+    interface Item {
+        user_id: string;
+       
+    }
     const fetchData = async () => {
+        setLoading(true);
         const response = await list("items");
-        setDataBase(response as never[]);
+        const items = (response as never[]).filter((item: Item) => item.user_id === userIdentity);
+        setLoading(false);
+
+        setDataBase(loading ? [] : items);
     };
 
     const onDrop = async (id: number) => {
