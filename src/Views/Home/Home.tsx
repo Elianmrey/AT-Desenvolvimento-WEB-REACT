@@ -23,7 +23,7 @@ export default function Home() {
 
     const userIdentity: string = userJson.id
 
-    console.log("User ID: ", userIdentity);
+ 
 
 
 
