@@ -7,33 +7,54 @@ import { useEffect, useState } from 'react';
 import MaterialCard from '../../Components/MaterialCard.tsx';
 import MaterialAppBar from '../../Components/CustomComponents/AppBar.tsx';
 import { useAppContext } from '../../../Context/Context.tsx';
+import { getTitle } from '../../Utils/Utils.tsx';
 
 export default function DashBoard() {
     const { translate } = useAppContext();
     const [dataItem, setDataItem] = useState({
-            id: 42,
-            created_at: "",
-            type: 0,
-            side: 0,
-           quantity: 0,
-            start_date: "",
-            end_date: "",
-            observation: "",
-            action_type: 0,
-            title: ""
+        id: 0,
+        created_at: "",
+        type: 0,
+        side: 0,
+        quantity: 0,
+        start_date: "",
+        end_date: "",
+        observation: "",
+        action_type: 0,
+        title: ""
         
     });
 
 
-    function handleSide (side: number) {
+    function handleSide(side: number) {
         if (side === 1)
             return translate("left");
         if (side === 2)
             return translate("right");
-        if (side ===3)
+        if (side === 3)
             return translate("both");
     }
 
+
+    function handleActionType(actionType: number) {
+        return translate(getTitle(actionType));
+    }
+
+
+    interface ResponseType {
+        id: number;
+        created_at: string;
+        type: number;
+        side: number;
+        quantity: number;
+        start_date: string;
+        end_date: string;
+        observation: string;
+        action_type: number;
+        title: string;
+    }
+
+   
     const { id } = useParams();
    
     useEffect(() => {
@@ -41,11 +62,22 @@ export default function DashBoard() {
     }, [id]); 
     async function getDashboard(idItem: number) {
   try {
-    await get("items", idItem).then((response : any[] | null) => {
-      setDataItem(response?.[0] ?? {});
+      await get("items", idItem).then((response: ResponseType[] | null  ) => {
+          setDataItem(response[0] ?? {
+              id: 0,
+              created_at: "",
+              type: 0,
+              side: 0,
+              quantity: 0,
+              start_date: "",
+              end_date: "",
+              observation: "",
+              action_type: 0,
+              title: ""
+      });
     });
   } catch (error) {
-    console.log(error);
+    console.log("Tivemos um problema ao recuperar as informações",error);
   }
 }
   
@@ -56,29 +88,34 @@ export default function DashBoard() {
 
         <MaterialBox styles={styles.container}>
             <MaterialAppBar  title="Dashboard" home={false}/>
-            <MaterialContainer styles={{width: "100%"}}>
-                
-                <MaterialTypography variant="h4" component="h1" styles={{ textAlign: 'center', marginBottom: 20, display:'block'} }>Dashboard</MaterialTypography>
-             {dataItem.title ? <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 20, display: 'block' }}>
+            <MaterialContainer styles={{width: "100%", height: "100%",justifyContent: "flex-start", alignItems: "center"}}>
+            
+             {dataItem.title ? <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginTop: 10, display: 'block' }}>
                         {translate(dataItem.title)}
                 </MaterialTypography> : false}
-                   {dataItem.side ? <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 20, display: 'block' }}>
+                {dataItem.side ? <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginTop: 5, marginBottom: 2, display: 'block' }}>
                        {translate('side')+': ' + handleSide(dataItem.side)}
-                    </MaterialTypography> : false}
-                   
-                {dataItem.quantity ? <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 20, display: 'block' }}>
-                    {translate('quantity') + ': ' + handleSide(dataItem.quantity)+ ' ml'}
-                    </MaterialTypography> : false}
-                <MaterialCard>
-                     
-                 
-
-                    
-                    <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 20, display: 'block' }}>
-                        {dataItem.observation}
-                    </MaterialTypography>
+                </MaterialTypography> : false}
                 
-                <MaterialTypography> Sem Implementação Grafica (Não solicitado)</MaterialTypography>
+                {dataItem.start_date ? <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 2, display: 'block' }}>
+                    {translate('start-date') + ': ' + new Date(dataItem.start_date).toLocaleString()}
+                </MaterialTypography> : false}
+                
+                {dataItem.end_date ? <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 2, display: 'block' }}>
+                    {translate('end-date') + ': ' + new Date(dataItem.end_date).toLocaleString()}
+                </MaterialTypography> : false}
+                   
+                {dataItem.quantity ? <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 2, display: 'block' }}>
+                    {translate('quantity') + ': ' + dataItem.quantity+ ' ml'}
+                </MaterialTypography> : false}
+
+                {dataItem.action_type ? <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 2, display: 'block' }}>
+                    {translate('action') + ': ' + handleActionType(dataItem.action_type)}
+                </MaterialTypography> : false}
+                <MaterialCard>
+                    {dataItem.observation ? <MaterialTypography variant="h5" component="h2" styles={{ textAlign: 'center', marginBottom: 2, display: 'block' }}>
+                        Observações:  {dataItem.observation}
+                    </MaterialTypography>: false}
               </MaterialCard>
            </MaterialContainer>
         </MaterialBox>
@@ -89,10 +126,10 @@ const styles = {
    container: {
         padding: '30px',
         display: 'flex',
+        height: '97vh',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        height: '97vh',
+        justifyContent: 'center',
         backgroundColor: 'indigo',
         borderRadius: '10px',
         borderColor: 'grey',
