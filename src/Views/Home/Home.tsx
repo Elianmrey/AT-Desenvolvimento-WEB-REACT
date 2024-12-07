@@ -24,11 +24,6 @@ export default function Home() {
     const userIdentity: string = userJson.id
 
  
-
-
-
-
-
     interface Item {
         user_id: string;
        
