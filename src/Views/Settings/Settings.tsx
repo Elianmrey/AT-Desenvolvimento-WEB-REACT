@@ -19,9 +19,9 @@ export default function Formulary() {
         e.preventDefault();
         console.log(data);
         baby.name = data.name;
-        baby.weight = data.weight.toString();
-        baby.height = data.height.toString();
-        baby.time = data.time.toString();
+        baby.weight = data.weight.toString() +' '+ translate('grams');
+        baby.height = data.height.toString()+ ' cm';
+        baby.time = data.time.toString() ;
         setData({ name: '', weight: 0, height: 0, time: 0 });
     };
 
@@ -29,6 +29,7 @@ export default function Formulary() {
     return (
         <MaterialContainer styles={styles.container}>
             <MaterialAppBar title={translate("settings")} home={false} settings />
+            
             <MaterialCard styles={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", }}>
                 <MaterialTypography variant='h5' component={'h2'} styles={styles.typographyStyle}>
                     {translate('baby-info')}
@@ -59,7 +60,6 @@ export default function Formulary() {
 };
 const styles = {
     container: {
-        padding: '30px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
