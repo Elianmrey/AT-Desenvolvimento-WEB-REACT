@@ -69,5 +69,9 @@
    "no-items-to-show": "Nenhum item para mostrar",
    "item-saved-success": "Item cadastrado com sucesso!",
    "baby-info": "Informação do bebê",
-    "grams": "gramas"
+   "grams": "gramas",
+   "time": "Idade do bebe (dias)",
+   "diaper-change": "Troca de fralda",
+   "eating":"Amamentando",
+   "sleeping":"Dormindo"
 }

@@ -63,7 +63,7 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: '90vh',
+        height: '97vh',
         backgroundColor: 'indigo',
         borderRadius: '10px',
         borderColor: 'grey',

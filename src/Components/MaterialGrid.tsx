@@ -40,7 +40,7 @@ export default function MaterialGrid({ baby }: MaterialGridProps) {
                 <MaterialContainer styles={styles.containerIcons}>
                     <img src={babyImg} alt="Image" style={styles.img} />
                     <MaterialTypography  styles={styles.text}>{ baby.name }</MaterialTypography>
-                    <MaterialTypography  styles={styles.text}>{ baby.time + translate('months')} </MaterialTypography>
+                    <MaterialTypography  styles={styles.text}>{ baby.time + translate('days')} </MaterialTypography>
                 </MaterialContainer>
 
                 <MaterialContainer styles={styles.containerIcons}  >

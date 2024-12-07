@@ -23,7 +23,7 @@ export default function Diaper({ data, setData, translate }: DiaperProps) {
         options?: { value: string | number; label: string; }[];
     }[] = [
             { name: "start_date", label: translate("start-date"), type: "date" },
-            { name: "type", label: translate("type"), type: "select", options: [{ value: 1, label: "diaper-wet" }, { value: 2, label: "diaper-dirty" },{ value: 3, label: "diaper-both" }] },
+            { name: "type", label: translate("type"), type: "select", options: [{ value: 1, label: "diaper-wet" }, { value: 2, label: "diaper-dirty" },{ value: 3, label: "diaper-both" }, { value: 4, label: "diaper-clean" }] },
             { name: "observation", label: translate("observation"), type: "text" },
         ];
 

@@ -68,5 +68,9 @@
    "no-items-to-show": "No Items To Show",
    "item-saved-success": "Item Saved Successfully!",
    "baby-info": "Baby Information",
-   "grams": "grams"
+   "grams": "grams",
+   "time": "Baby Age (days)",
+   "diaper-change": "Diaper Change",
+   "eating":"Breastfeeding",
+   "sleeping":"Sleeping"
 }

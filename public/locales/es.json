@@ -69,5 +69,9 @@
    "no-items-to-show": "No hay elementos para mostrar",
    "item-saved-success": "Elemento guardado con exito!",
    "baby-info": "Información del bebé",
-    "grams": "gramos"
+    "grams": "gramos",
+      "time": "Edad del bebe (días)",
+      "diaper-change": "Cambio de pañal",
+      "eating":"Amamantando",
+      "sleeping":"Durmiendo"
 }

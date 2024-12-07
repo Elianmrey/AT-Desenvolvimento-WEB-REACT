@@ -5,15 +5,15 @@ import MaterialBox from '../../Components/MaterialBox.tsx';
 import AppBar from '../../Components/CustomComponents/AppBar.tsx';
 import { useAppContext } from '../../../Context/Context.tsx';
 import MaterialTypography from './../../Components/MaterialTypography';
-import { baby } from '../../Constants/Data.tsx';
+import { baby } from '../../Constants/BabyData.tsx';
 import CustomItemList from '../../Components/CustomComponents/CustomList.tsx';
-import { list } from '../../Services/Supabase'; 
+import { list } from '../../Services/Supabase';
 import { drop } from '../../Services/Supabase';
 export default function Home() {
-    const [dataBase, setDataBase] = useState ([]);
+    const [dataBase, setDataBase] = useState([]);
     const { translate } = useAppContext();
 
-   
+
     const fetchData = async () => {
         const response = await list("items");
         setDataBase(response as never[]);
@@ -26,7 +26,8 @@ export default function Home() {
 
 
     useEffect(() => {
-        fetchData();   }, []);
+        fetchData();
+    }, []);
 
     return (
         <MaterialBox styles={Styles.container}>
@@ -40,8 +41,8 @@ export default function Home() {
 
             <MaterialGrid baby={baby} />
             <MaterialCard styles={Styles.card}>
-                
-                <CustomItemList items={dataBase.length > 0 ? dataBase : []} onDrop={onDrop}/>
+
+                <CustomItemList items={dataBase.length > 0 ? dataBase : []} onDrop={onDrop} />
             </MaterialCard>
         </MaterialBox>
     );
@@ -63,7 +64,7 @@ const Styles = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: '90vh',
+        height: '97vh',
         backgroundColor: 'indigo',
         borderRadius: '10px',
         borderColor: 'grey',

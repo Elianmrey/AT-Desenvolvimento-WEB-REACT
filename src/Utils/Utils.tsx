@@ -1,13 +1,13 @@
 const getTitle = (action_type: number): string => {
     switch (action_type) {
         case 1:
-            return "sleep";
+            return "sleeping";
         case 2:
-            return "eat";
+            return "eating";
         case 3:
-            return "diaper";
+            return "diaper-change";
         default:
-            return "eat";
+            return "eating";
     }
 };
 
